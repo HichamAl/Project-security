@@ -44,7 +44,8 @@ python manage.py runserver
 ## Support
 
 
-Documentation [Django website](https://docs.djangoproject.com/en/4.1/intro/tutorial01/).
+Documentation [Django website](https://docs.djangoproject.com/en/4.1/intro/tutorial01/)
+
 Documentation[Gitlab](https://git-scm.com/docs).
 
 
