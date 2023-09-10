@@ -1,0 +1,167 @@
+* {
+    font-family:Open Sans, Arial, sans-serif;
+    margin:0;
+    padding:0;
+}
+
+.topnav-links {
+    width: 100%;
+    background-color: #f7f9fb;
+    color: #2b2b2b;
+    font-weight: bold;
+    font-weight: 600px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.topnav-links a {
+    text-decoration: none;
+    color: #2b2b2b;
+    font-weight: 600px;
+    font-size: 16px;
+    margin: 0 15px;
+}
+
+.topnav {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    color: white;
+    height: 200px; /* Adjust the height as needed */
+}
+
+.logo-container {
+    flex: 0 0 auto; /* Prevent the logo from growing */
+    margin-right: 20px; /* Add some spacing between the logo and links */
+}
+
+.topnav-logo {
+    max-height: 120px; /* Set the maximum height for the logo */
+    width: auto;
+}
+
+.topnav a {
+    text-decoration: none;
+    color:#406a9e;
+    font-size: 25px; /* Adjust the font size as needed */
+    margin: 0 15px; /* Add spacing between the links */
+    font-weight: 400;
+}
+
+
+  .styled-box {
+    font-size:25px;
+    background-color: #00387d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    height: 300px;
+    margin: 20px auto;
+    margin-top: 150px;
+    
+}
+
+.styled-box p {
+    font-size: 25px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+.zoek-form {
+    text-align: center;
+}
+
+.zoek-form label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.zoek-form input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.zoek-form input[type="submit"] {
+    background-color: #406a9e;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.zoek-form input[type="submit"]:hover {
+    background-color: #00387d;
+}
+
+
+.promo-tekst {
+    height:50px;
+    width: 100%;
+    float:inline-start;
+    background-color: #00387d;
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.promo-tekst p {
+    font-size: 25px;
+}
+
+/* Stijl voor de footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 140px;
+    width: 100%;
+    background-color: #333; /* Achtergrondkleur van de footer */
+    color: #fff; /* Tekstkleur in de footer */
+    padding: 20px 0; /* Binnenruimte boven en onder de inhoud */
+}
+
+/* Stijl voor elke kolom in de footer */
+.footer-column {
+    width: 25%; /* Elke kolom krijgt 25% van de breedte */
+    padding: 0 20px; /* Binnenruimte aan de zijkanten van elke kolom */
+    box-sizing: border-box; /* Inhoud en padding tellen mee in de breedte */
+    float: left; /* Plaats de kolommen naast elkaar */
+}
+
+/* Stijl voor de kop van elke kolom */
+.footer-column h3 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+/* Stijl voor de lijst met links */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Stijl voor de links in de lijst */
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #fff; /* Kleur van de links in de footer */
+}
+
+/* Stijl voor de links bij hover (muis erover) */
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}

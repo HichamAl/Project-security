@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kadaster</title>
+        <link rel="stylesheet" href="{% static 'home.css' %}">
+    </head>
+    <body>
+        <div class="topnav-links">
+            <a href="#">Particulier</a>
+            <a href="#">Zakelijk</a>
+            <a href="#">Mijn Kadaster</a>
+        </div>
+
+        <div class="topnav">
+            <div class="logo-container">
+            <img class="topnav-logo" alt="kadaster_logo" src="https://www.kadaster.nl/o/iv-kadaster-business-theme/images/logos/kadaster_logo_20230130.png">
+            </div>
+            <a href="#">Home</a>
+            <a href="#">Inzicht in</a>
+            <a href="#">Registraties</a>
+            <a href="#">Direct naar</a>
+            <a href="#">Over ons</a>
+          </div>
+
+        <div class="promo-tekst">
+            <p>De bron voor betrouwbare geo- en vastgoedinformatie. Het Kadaster. Met recht van jou.</p>
+        </div>
+
+        <div class="styled-box">
+            <p>Waar bent u naar op zoek?</p>
+            <form class="zoek-form" action="#">
+                <label for="zoek-term">Wij helpen u graag op weg:</label><br>
+                <input type="text" id="zoek-term" name="zoek-term"><br>
+                <input type="submit" value="Zoek">
+            </form>
+            <p>Dagelijks helpen wij 4.000 bezoekers.</p>
+        </div>
+
+        <footer>
+            <div class="footer-column">
+                <h3>Vragen?</h3>
+                <p>Kunt u een antwoord niet vinden? Hebt u een klacht? Onze medewerkers helpen u graag <a style="color:white;" href="#" >hier.</a></p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Klantenservice</h3>
+                <p>Email: Kadaster@example.com</p>
+                <p>Telefoon: 088 - 183 22 00</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Diensten</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Sociale media</h3>
+                <ul>
+                    <li><a href="#">Facebook: Het_Kadaster</a></li>
+                    <li><a href="#">Twitter: @KadasterWebcare</a></li>
+                    <li><a href="#">LinkedIn: Kadaster</a></li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>
