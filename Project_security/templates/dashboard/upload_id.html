@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload ID</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .upload-container {
+            max-width: 600px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .upload-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .upload-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .upload-button:hover {
+            background-color: #0056b3;
+        }
+        .upload-input {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h1 class="upload-title">Upload Your ID</h1>
+        <form action="{% url 'upload_id' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input class="upload-input" type="file" name="id">
+            <br>
+            <button class="upload-button" type="submit">Upload</button>
+        </form>
+    </div>
+</body>
+</html>

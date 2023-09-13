@@ -49,3 +49,26 @@ def loginPage(request):
 
 
     return render(request, "login.html")
+
+def dashboard(request):
+    return render(request, 'dashboard/dashboard.html')
+
+def upload_id(request):
+    if request.method == 'POST':
+        uploaded_id = request.FILES['id']
+        # Add logic to process the uploaded ID here
+        return render(request, 'dashboard/upload_success.html', {'id_name': uploaded_id.name})
+
+    return render(request, 'dashboard/upload_id.html')
+
+def register(request):
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+
+    context = {'form': form}
+    return render(request, "register.html", context)
