@@ -45,7 +45,7 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('dashboard')
 
 
     return render(request, "login.html")
@@ -61,14 +61,3 @@ def upload_id(request):
 
     return render(request, 'dashboard/upload_id.html')
 
-def register(request):
-    form = CreateUserForm()
-
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('dashboard')
-
-    context = {'form': form}
-    return render(request, "register.html", context)
