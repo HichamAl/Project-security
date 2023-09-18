@@ -18,10 +18,10 @@ def register(request):
             form.save()
             messages.success(request, 'Account is succesvol aangemaakt')
 
-            return redirect('login')
+            return redirect('auth/login')
     else:
         form = CreateUserForm()
-
+    print('test')
     context = {'form':form}
     return render(request, "register/register.html", context)
 
@@ -65,6 +65,7 @@ def upload_id(request):
                 return render(request, 'dashboard/upload_success.html', {'id_name': uploaded_file.name})
         else:
             # Geen bestand geüpload, toon een foutmelding aan de gebruiker
+            
             error_message = "U heeft geen bestand geüpload. Probeer opnieuw."
             return render(request, 'dashboard/upload_id.html', {'error_message': error_message})
 
