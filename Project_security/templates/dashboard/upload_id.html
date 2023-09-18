@@ -47,12 +47,23 @@
 <body>
     <div class="upload-container">
         <h1 class="upload-title">Upload Your ID</h1>
-        <form action="{% url 'upload_id' %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'upload_id' %}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
             {% csrf_token %}
             <input class="upload-input" type="file" name="id">
             <br>
             <button class="upload-button" type="submit">Upload</button>
         </form>
     </div>
+
+    <script>
+    function validateForm() {
+        var fileInput = document.querySelector('input[type="file"]');
+        if (!fileInput.files || !fileInput.files[0]) {
+            alert('Please select a file');
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+    </script>
 </body>
 </html>

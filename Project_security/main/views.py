@@ -55,9 +55,16 @@ def dashboard(request):
 
 def upload_id(request):
     if request.method == 'POST':
-        uploaded_id = request.FILES['id']
-        # Add logic to process the uploaded ID here
-        return render(request, 'dashboard/upload_success.html', {'id_name': uploaded_id.name})
+        uploaded_id = request.FILES.get('id')
+
+        if uploaded_id:
+            # Process the uploaded ID
+            # ...
+
+            return render(request, 'dashboard/upload_success.html', {'id_name': uploaded_id.name})
+        else:
+            return HttpResponse('No file selected', status=400)
 
     return render(request, 'dashboard/upload_id.html')
+
 
