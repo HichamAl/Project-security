@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .models import VerifiedUsers
 from .forms import FileUploadForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -18,7 +19,7 @@ def register(request):
             form.save()
             messages.success(request, 'Account is succesvol aangemaakt')
 
-            return redirect('auth/login')
+            return redirect('/login')
     else:
         form = CreateUserForm()
     print('test')
@@ -37,22 +38,21 @@ def loginPage(request):
 
             if user is not None:
                 login(request, user)
-                return redirect('dashboard')
+                return redirect('/auth/dashboard')
         context['login_error'] = "Invalid username or password."
 
     form = AuthenticationForm()
     context['login_form'] = form
     return render(request, "register/login.html", context=context)
 
+@login_required
+def dashboard(request):
+    return render(request, 'register/dashboard.html', {})
 
 
+@login_required
 def upload_id(request):
     user = request.user
-
-    try:
-        verified_user = VerifiedUsers.objects.get(user=user)
-    except VerifiedUsers.DoesNotExist:
-        verified_user = None
 
     if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
@@ -69,11 +69,11 @@ def upload_id(request):
             error_message = "U heeft geen bestand geüpload. Probeer opnieuw."
             return render(request, 'dashboard/upload_id.html', {'error_message': error_message})
 
-    return render(request, 'dashboard/upload_id.html', {'form': form, 'verified_user': verified_user})
+    return render(request, 'register/upload_id.html', {'form': form, 'verified_user': verified_user})
 
 
 def logout(request):
 	if request.user.is_authenticated:
 		logout(request)
 	
-	return redirect('/auth/login/')
+	return redirect('/login')
