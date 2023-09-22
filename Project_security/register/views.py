@@ -73,7 +73,7 @@ def upload_id(request):
                 
             uploaded_file = form.cleaned_data['id']  # Retrieve the uploaded file
             # Voeg hier logica toe om het geüploade ID te verwerken
-            return render(request, 'dashboard/upload_success.html', {'id_name': uploaded_file.name})
+            return render(request, 'register/upload_success.html', {'id_name': uploaded_file.name})
         else:
             # Geen bestand geüpload, toon een foutmelding aan de gebruiker
             error_message = "U heeft geen bestand geüpload. Probeer opnieuw."
@@ -107,9 +107,7 @@ def upload_id(request):
 #    return render(request, 'register/upload_id.html', {'form': form, 'verified_user': verified_user})
 
 
-@login_required
-def upload_success(request):
-    return render(request, 'dashboard/upload_id.html/upload_success.html')
+
 
 
 def logout(request):
