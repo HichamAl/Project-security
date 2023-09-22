@@ -38,12 +38,26 @@ def loginPage(request):
 
             if user is not None:
                 login(request, user)
-                return redirect('/auth/dashboard')
+
+                try:
+                    # Probeer de verificatiestatus van de gebruiker op te halen
+                    verified_user = VerifiedUsers.objects.get(user=user)
+                    if verified_user.verified:
+                        # Als de gebruiker is geverifieerd, stuur hem door naar de homepage
+                        return redirect('home')
+                    else:
+                        # Als de gebruiker niet is geverifieerd, stuur hem naar het dashboard
+                        return redirect('register:dashboard')
+                except VerifiedUsers.DoesNotExist:
+                    # Als er geen VerifiedUsers-record is, ga gewoon door
+                    return redirect('register:dashboard')
+
         context['login_error'] = "Invalid username or password."
 
     form = AuthenticationForm()
     context['login_form'] = form
     return render(request, "register/login.html", context=context)
+
 
 @login_required
 def dashboard(request):
