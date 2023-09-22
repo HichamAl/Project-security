@@ -19,7 +19,7 @@ def register(request):
             form.save()
             messages.success(request, 'Account is succesvol aangemaakt')
 
-            return redirect('/login')
+            return redirect('register:login')
     else:
         form = CreateUserForm()
     print('test')
