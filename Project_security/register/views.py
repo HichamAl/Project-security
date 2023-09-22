@@ -50,26 +50,66 @@ def dashboard(request):
     return render(request, 'register/dashboard.html', {})
 
 
+
 @login_required
 def upload_id(request):
     user = request.user
+    form = FileUploadForm()  
+    verified_user = None  
 
     if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            if not verified_user:
+            try:
+                # Try to retrieve the existing VerifiedUsers record for the user
+                verified_user = VerifiedUsers.objects.get(user=user)
+                verified_user.uploaded_file = form.cleaned_data['id']
+                verified_user.verified = True
+                verified_user.save()
+            except VerifiedUsers.DoesNotExist:
+                # Create a new VerifiedUsers instance for the user
                 verified_user = VerifiedUsers(user=user, uploaded_file=form.cleaned_data['id'], verified=True)
                 verified_user.save()
-       
-                # Voeg hier logica toe om het geüploade ID te verwerken
-                return render(request, 'dashboard/upload_success.html', {'id_name': uploaded_file.name})
+                
+            uploaded_file = form.cleaned_data['id']  # Retrieve the uploaded file
+            # Voeg hier logica toe om het geüploade ID te verwerken
+            return render(request, 'dashboard/upload_success.html', {'id_name': uploaded_file.name})
         else:
             # Geen bestand geüpload, toon een foutmelding aan de gebruiker
-            
             error_message = "U heeft geen bestand geüpload. Probeer opnieuw."
-            return render(request, 'dashboard/upload_id.html', {'error_message': error_message})
+            return render(request, 'dashboard/upload_id.html', {'error_message': error_message, 'form': form})
 
     return render(request, 'register/upload_id.html', {'form': form, 'verified_user': verified_user})
+
+
+
+
+#@login_required
+#def upload_id(request):
+#    user = request.user
+#    form = FileUploadForm()  
+#    verified_user = None  
+#
+#    if request.method == 'POST':
+#        form = FileUploadForm(request.POST, request.FILES)
+#        if form.is_valid():
+#            if not verified_user:
+#                verified_user = VerifiedUsers(user=user, uploaded_file=form.cleaned_data['id'], verified=True)
+#                verified_user.save()
+#                uploaded_file = form.cleaned_data['id']  # Retrieve the uploaded file
+#                # Voeg hier logica toe om het geüploade ID te verwerken
+#                return render(request, 'dashboard/upload_success.html', {'id_name': uploaded_file.name})
+#        else:
+#            # Geen bestand geüpload, toon een foutmelding aan de gebruiker
+#            error_message = "U heeft geen bestand geüpload. Probeer opnieuw."
+#            return render(request, 'dashboard/upload_id.html', {'error_message': error_message, 'form': form})
+#
+#    return render(request, 'register/upload_id.html', {'form': form, 'verified_user': verified_user})
+
+
+@login_required
+def upload_success(request):
+    return render(request, 'dashboard/upload_id.html/upload_success.html')
 
 
 def logout(request):

@@ -50,7 +50,7 @@
         {% if error_message %}
         <p class="error">{{ error_message }}</p>
         {% endif %}
-        <form action="{% url 'upload_id' %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'register:upload_id' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input class="upload-input" type="file" name="id">
             <br>
