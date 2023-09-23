@@ -12,7 +12,20 @@
             <a href="#">Mijn Kadaster</a>
         </div>
 
+        {% if user.is_authenticated %}
         <div class="topnav">
+            <div class="logo-container">
+            <img class="topnav-logo" alt="kadaster_logo" src="https://www.kadaster.nl/o/iv-kadaster-business-theme/images/logos/kadaster_logo_20230130.png">
+            </div>
+            <a href="#">Home</a>
+            <a href="#">Inzicht in</a>
+            <a href="{% url 'register:dashboard' %}">Dashboard</a>
+            <a href="{% url 'register:logout' %}">Logout</a>
+            <a href="#">Direct naar</a>
+            <a href="#">Over ons</a>
+          </div>
+          {% else %}
+          <div class="topnav">
             <div class="logo-container">
             <img class="topnav-logo" alt="kadaster_logo" src="https://www.kadaster.nl/o/iv-kadaster-business-theme/images/logos/kadaster_logo_20230130.png">
             </div>
@@ -23,7 +36,7 @@
             <a href="#">Direct naar</a>
             <a href="#">Over ons</a>
           </div>
-
+          {% endif %}
         <div class="promo-tekst">
             <p>De bron voor betrouwbare geo- en vastgoedinformatie. Het Kadaster. Met recht van jou.</p>
         </div>

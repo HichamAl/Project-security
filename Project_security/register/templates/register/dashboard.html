@@ -44,8 +44,18 @@
 <body>
     <div class="dashboard-container">
         <div class="dashboard-title">Welcome to Your Dashboard</div>
-        <p>Get started by uploading your ID:</p>
-        <a href="{% url 'register:upload_id' %}" class="upload-link">Upload ID</a>
+        {% if is_verified %}
+            <p>You are verified.</p>
+            <p>Username: {{ user.get_username }}</p>
+            <p>Email: {{ user.email }}</p>
+            <a href="{% url 'register:logout' %}">Logout</a>
+            <!-- Add content for verified users here -->
+        {% else %}
+            <p>Get started by uploading your ID:</p>
+            <a href="{% url 'register:upload_id' %}" class="upload-link">Upload ID</a>
+            <!-- Add content for non-verified users here -->
+        {% endif %}
     </div>
 </body>
 </html>
+

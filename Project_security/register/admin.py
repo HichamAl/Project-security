@@ -9,3 +9,4 @@ class VerifiedUsersAdmin(admin.ModelAdmin):
     search_fields = ('user__username',)
 
 admin.site.register(VerifiedUsers, VerifiedUsersAdmin)
+

@@ -36,6 +36,11 @@
     <div class="success-container">
         <h1 class="success-title">Upload Successful</h1>
         <p class="success-message">The ID '{{ id_name }}' has been uploaded successfully.</p>
+        {% if succes_message %}
+        <p class="success-message">{{ succes_message }}</p>
+        <a href="{% url 'register:dashboard' %}">Klik hier om naar het Dashboard te gaan</a>
+        {% endif %}
+
     </div>
 </body>
 </html>
